@@ -48,7 +48,7 @@ Si lo conjuntásemos con la copia completa anterior, se copiaría todo el árbol
 </xsl:stylesheet>
 ```
 
-### Modificar un elemento del árbol
+## Modificar un elemento del árbol
 
 Para modificar un elemento del fichero xml, creamos una plantilla que coincida con dicho elemento, y en su cuerpo, introducimos las modificaciones que queramos realizar:
 
