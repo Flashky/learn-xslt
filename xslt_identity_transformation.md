@@ -42,9 +42,40 @@ Si lo conjuntásemos con la copia completa anterior, se copiaría todo el árbol
       </xsl:copy>
   </xsl:template>
   
+  <!-- Delete certain node -->
+  <xsl:template match="parentNode/childNode" />
+  
+</xsl:stylesheet>
+```
+
+### Modificar un elemento del árbol
+
+Para modificar un elemento del fichero xml, creamos una plantilla que coincida con dicho elemento, y en su cuerpo, introducimos las modificaciones que queramos realizar:
+
+```xslt
   <!-- Change childNode content to childNodeNew content -->
   <xsl:template match="parentNode/childNode">
-    <childNodeNew>Hola mundo!</childNodeNew>
+    <childNodeNew>Hola mundo!</childNodeNew>
+  </xsl:template>
+```
+
+En el anterior caso, buscamos los nodos childNode que cuelguen de parentNodes y los sustituimos por un nodo childNodeNew que contiene un Hola mundo! en su interior.
+
+Si lo conjuntásemos con la copia completa anterior, se copiaría todo el árbol, menos todos aquellos nodo denominados childNode que cuelguen de un nodo llamado parentNod los cuales, los modificaría como hemos visto anteriormente:
+
+```xslt
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <!-- Copy whole XML tree -->
+  <xsl:template match="@*|node()">
+      <xsl:copy>
+          <xsl:apply-templates select="@*|node()"/>
+      </xsl:copy>
+  </xsl:template>
+  
+  <!-- Change childNode content to childNodeNew content -->
+  <xsl:template match="parentNode/childNode">
+    <childNodeNew>Hola mundo!</childNodeNew>
   </xsl:template>
   
 </xsl:stylesheet>
